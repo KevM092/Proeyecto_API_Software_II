@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.models import Cliente,Evento
+from api.models import Cliente,Evento, Categoria
 
 
 class ClienteSerializer(serializers.ModelSerializer):
@@ -28,3 +28,14 @@ class postEventoSerializer(serializers.ModelSerializer):
         fields = ('nombre','fecha','hora','descripcion','email','calificacion','precio', 'estado' , 'imagen' , 'lugar_id_lugar', 
     'categoria_id_categoria', 
     'cliente_id_cliente')
+      
+    
+class CategoriaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Categoria
+        fields = ('id_categoria','nombre')
+
+class postCategoriaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Categoria
+        fields = ['nombre']
