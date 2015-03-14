@@ -11,6 +11,9 @@ urlpatterns = patterns('',
     
 	url(r'^Evento/$', 'api.views.Evento_list', name='Evento_list'),
 	url(r'^Evento/(?P<pk>[0-9]+)$', 'api.views.Evento_detail', name='Evento_detail'),
+	
+	url(r'^Categoria/$', 'api.views.Categoria_list', name='Categoria_list'),
+	url(r'^Categoria/(?P<pk>[0-9]+)$', 'api.views.Categoria_detail', name='Categoria_detail'),
     
     url(r'^admin/', include(admin.site.urls)),
 )
