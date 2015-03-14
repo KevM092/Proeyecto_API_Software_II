@@ -1,0 +1,9 @@
+Operations to perform:
+  Synchronize unmigrated apps: rest_framework
+  Apply all migrations: admin, contenttypes, auth, sessions
+Synchronizing apps without migrations:
+  Creating tables...
+  Installing custom SQL...
+  Installing indexes...
+Running migrations:
+  No migrations to apply.
