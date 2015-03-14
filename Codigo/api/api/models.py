@@ -75,7 +75,7 @@ class Cliente(models.Model):
     id_cliente = models.IntegerField(primary_key=True, db_column=u'idCliente')
     nombre = models.CharField(max_length=15, db_column=u'Nombre', blank=True)
     usuario = models.CharField(max_length=15, db_column=u'Usuario', blank=True)
-    email = models.CharField(max_length=20, db_column=u'Email', blank=True)
+    email = models.CharField(max_length=30, db_column=u'Email', blank=True)
     contrase_a = models.CharField(max_length=15, db_column=u'Contrase\xf1a', blank=True)
     sexo = models.IntegerField(null=True, db_column=u'Sexo', blank=True)
     administrador = models.IntegerField(null=True, db_column=u'Administrador', blank=True)
