@@ -157,8 +157,8 @@ class Evento(models.Model):
 
 class Lugar(models.Model):
     id_lugar = models.IntegerField(primary_key=True, db_column=u'idLugar')
-    nombre = models.CharField(max_length=15, db_column=u'Nombre', blank=True)
-    direccion = models.CharField(max_length=15, db_column=u'Direccion', blank=True)
+    nombre = models.CharField(max_length=45, db_column=u'Nombre', blank=True)
+    direccion = models.CharField(max_length=45, db_column=u'Direccion', blank=True)
 
     class Meta:
         db_table = u'lugar'

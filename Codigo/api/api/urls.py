@@ -17,6 +17,9 @@ urlpatterns = patterns('',
 	
 	url(r'^Telefonos/$', 'api.views.Telefonos_list', name='Telefonos_list'),
 	url(r'^Telefonos/(?P<pk>[0-9]+)$', 'api.views.Telefonos_detail', name='Telefonos_detail'),
+	
+	url(r'^Lugar/$', 'api.views.Lugar_list', name='Lugar_list'),
+	url(r'^Lugar/(?P<pk>[0-9]+)$', 'api.views.Lugar_detail', name='Lugar_detail'),
     
     url(r'^admin/', include(admin.site.urls)),
 )
