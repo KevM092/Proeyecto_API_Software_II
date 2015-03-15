@@ -149,3 +149,51 @@ def Categoria_detail(request, pk):
         task.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 ##Finn
+###Inicio Telefono
+@api_view(['GET', 'POST'])
+def Telefonos_list(request):
+    """
+    List all tasks, or create a new task.
+    """
+    if request.method == 'GET':
+        tasks = Telefonos.objects.all()
+        serializer = TelefonosSerializer(tasks, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer =postTelefonosSerializer(data=request.DATA)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(
+                serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def Telefonos_detail(request, pk):
+
+    """
+    Get, udpate, or delete Telefonos
+    """
+    try:
+        task = Telefonos.objects.get(pk=pk)
+    except task.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = TelefonosSerializer(task)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = TelefonosSerializer(task, data=request.DATA)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(
+                serilizer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        task.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+##Fin Telefono
