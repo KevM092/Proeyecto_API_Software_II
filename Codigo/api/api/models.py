@@ -146,7 +146,7 @@ class Evento(models.Model):
     calificacion = models.IntegerField(null=True, db_column=u'Calificacion', blank=True)
     precio = models.IntegerField(null=True, db_column=u'Precio', blank=True)
     estado = models.IntegerField(null=True, db_column=u'Estado', blank=True)
-    imagen = models.TextField(db_column=u'Imagen', blank=True)
+    imagen = models.TextField(null=True,db_column=u'Imagen', blank=True)
     lugar_id_lugar = models.ForeignKey('Lugar', db_column=u'Lugar_idLugar')
     categoria_id_categoria = models.ForeignKey('Categoria', db_column=u'Categoria_idCategoria')
     cliente_id_cliente = models.ForeignKey('Cliente', db_column=u'Cliente_idCliente')
