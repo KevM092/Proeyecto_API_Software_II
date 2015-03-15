@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.models import Cliente,Evento, Categoria,Telefonos 
+from api.models import Cliente,Evento, Categoria,Telefonos, Lugar
 
 
 class ClienteSerializer(serializers.ModelSerializer):
@@ -50,3 +50,14 @@ class postTelefonosSerializer(serializers.ModelSerializer):
     class Meta:
      model = Telefonos
      fields =('telefono','evento_id_evento')
+	
+		       
+class LugarSerializer(serializers.ModelSerializer):
+    class Meta:
+     model = Lugar
+     fields =('id_lugar','nombre','direccion')
+
+class postLugarSerializer(serializers.ModelSerializer):
+    class Meta:
+     model = Lugar
+     fields =('nombre','direccion')

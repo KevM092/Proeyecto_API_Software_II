@@ -197,3 +197,53 @@ def Telefonos_detail(request, pk):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 ##Fin Telefono
+
+
+##Inicio Lugar
+@api_view(['GET', 'POST'])
+def Lugar_list(request):
+    """
+    List all tasks, or create a new Lugar.
+    """
+    if request.method == 'GET':
+        tasks = Lugar.objects.all()
+        serializer = LugarSerializer(tasks, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer =postLugarSerializer(data=request.DATA)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(
+                serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def Lugar_detail(request, pk):
+
+    """
+    Get, udpate, or delete Lugar
+    """
+    try:
+        task = Lugar.objects.get(pk=pk)
+    except task.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = LugarSerializer(task)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = LugarSerializer(task, data=request.DATA)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(
+                serilizer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        task.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+##Fin lugar
