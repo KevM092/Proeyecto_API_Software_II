@@ -247,3 +247,53 @@ def Lugar_detail(request, pk):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 ##Fin lugar
+
+
+##Inicio MisEventos
+@api_view(['GET', 'POST'])
+def Miseventos_list(request):
+    """
+    List all tasks, or create a new Miseventos.
+    """
+    if request.method == 'GET':
+        tasks = Miseventos.objects.all()
+        serializer = MiseventosSerializer(tasks, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer =postMiseventosSerializer(data=request.DATA)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(
+                serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def Miseventos_detail(request, pk):
+
+    """
+    Get, udpate, or delete Miseventos
+    """
+    try:
+        task = Miseventos.objects.get(pk=pk)
+    except task.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = MiseventosSerializer(task)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = MiseventosSerializer(task, data=request.DATA)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(
+                serilizer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        task.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+##Fin lugar

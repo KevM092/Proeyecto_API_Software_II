@@ -20,6 +20,8 @@ urlpatterns = patterns('',
 	
 	url(r'^Lugar/$', 'api.views.Lugar_list', name='Lugar_list'),
 	url(r'^Lugar/(?P<pk>[0-9]+)$', 'api.views.Lugar_detail', name='Lugar_detail'),
-    
+	
+     url(r'^Miseventos/$', 'api.views.Miseventos_list', name='Miseventos_list'),
+	url(r'^Miseventos/(?P<pk>[0-9]+)$', 'api.views.Miseventos_detail', name='Miseventos_detail'),
     url(r'^admin/', include(admin.site.urls)),
 )

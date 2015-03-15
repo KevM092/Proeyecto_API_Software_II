@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.models import Cliente,Evento, Categoria,Telefonos, Lugar
+from api.models import Cliente,Evento, Categoria,Telefonos, Lugar,Miseventos
 
 
 class ClienteSerializer(serializers.ModelSerializer):
@@ -61,3 +61,14 @@ class postLugarSerializer(serializers.ModelSerializer):
     class Meta:
      model = Lugar
      fields =('nombre','direccion')
+	
+class MiseventosSerializer(serializers.ModelSerializer):
+    class Meta:
+     model = Miseventos
+     fields =('id_mis_eventos','cliente_id_cliente','evento_id_evento','mi_puntuacion')
+
+class postMiseventosSerializer(serializers.ModelSerializer):
+    class Meta:
+     model = Miseventos
+     fields =('cliente_id_cliente','evento_id_evento','mi_puntuacion')
+	###Fin acceso basico a tablas de de  la App
