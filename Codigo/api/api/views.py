@@ -9,7 +9,7 @@ from serializers import *
 @api_view(['GET', 'POST'])
 def Cliente_list(request):
     """
-    List all tasks, or create a new task.
+    List all tasks, or create a new Cliente.
     """
     if request.method == 'GET':
         tasks = Cliente.objects.all()
@@ -28,7 +28,7 @@ def Cliente_list(request):
 def Cliente_detail(request, pk):
 
     """
-    Get, udpate, or delete a specific task
+    Get, udpate, or delete un Cliente 
     """
     try:
         task = Cliente.objects.get(pk=pk)
@@ -106,7 +106,7 @@ def Evento_detail(request, pk):
 @api_view(['GET', 'POST'])
 def Categoria_list(request):
     """
-    List all tasks, or create a new task.
+    Obtener todas las categorias o crear una nueva.
     """
     if request.method == 'GET':
         tasks = Categoria.objects.all()
@@ -125,7 +125,7 @@ def Categoria_list(request):
 def Categoria_detail(request, pk):
 
     """
-    Get, udpate, or delete a specific task
+    Get, udpate, or delete una categoria especifica
     """
     try:
         task = Categoria.objects.get(pk=pk)
@@ -153,7 +153,7 @@ def Categoria_detail(request, pk):
 @api_view(['GET', 'POST'])
 def Telefonos_list(request):
     """
-    List all tasks, or create a new task.
+    Obtener todos los telefonos o crear uno nuevo
     """
     if request.method == 'GET':
         tasks = Telefonos.objects.all()
@@ -203,7 +203,7 @@ def Telefonos_detail(request, pk):
 @api_view(['GET', 'POST'])
 def Lugar_list(request):
     """
-    List all tasks, or create a new Lugar.
+    Obtener todos los lugrares o crear uno nuevo.
     """
     if request.method == 'GET':
         tasks = Lugar.objects.all()
@@ -253,7 +253,7 @@ def Lugar_detail(request, pk):
 @api_view(['GET', 'POST'])
 def Miseventos_list(request):
     """
-    List all tasks, or create a new Miseventos.
+    Obtener todos Miseventos o crear uno nuevo.
     """
     if request.method == 'GET':
         tasks = Miseventos.objects.all()
@@ -296,4 +296,15 @@ def Miseventos_detail(request, pk):
         task.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-##Fin lugar
+##Fin Mis eventos fin acceso basico
+
+@api_view(['GET'])
+def EventosCliente_list(request,pk):
+    """
+    List all tasks, or create a new task.
+    """
+    if request.method == 'GET':
+        tasks = Miseventos.objects.get(cliente_id_cliente=pk)
+	  
+        serializer = TelefonosSerializer(tasks, many=True)
+        return Response(serializer.data)
